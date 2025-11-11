@@ -1,7 +1,8 @@
 import axios from "axios";
 
 // Define the base URL pointing to your Express backend
-const API_URL = "http://localhost:5000/api/";
+//const API_URL = "http://localhost:5000/api/";
+const API_URL = "https://employee-task-manager-backend-61hf.onrender.com/api/";
 
 const axiosInstance = axios.create({
   baseURL: API_URL,

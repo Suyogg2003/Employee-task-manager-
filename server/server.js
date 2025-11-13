@@ -18,7 +18,10 @@ const app = express();
 const corsOptions = {
   // Only allow your specific frontend domain(s)
   //origin: ["http://localhost:5173"],
-  origin: ["https://employee-task-manager-jet.vercel.app/"],
+  origin: [
+    "https://employee-task-manager-jet.vercel.app/",
+    "http://localhost:5173",
+  ],
   methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
   credentials: true, // Crucial if sending cookies/authorization headers
 };

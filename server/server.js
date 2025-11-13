@@ -19,8 +19,9 @@ const corsOptions = {
   // Only allow your specific frontend domain(s)
   //origin: ["http://localhost:5173"],
   origin: [
-    "https://employee-task-manager-jet.vercel.app/",
-    "http://localhost:5173",
+    "https://employee-task-manager-jet.vercel.app", // <-- YOUR LIVE FRONTEND
+    "http://localhost:5173", // <-- Your local dev port (if still needed)
+    "http://localhost:3000",
   ],
   methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods
   credentials: true, // Crucial if sending cookies/authorization headers

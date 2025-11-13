@@ -13,41 +13,42 @@ const userRoutes = require("./routes/userRoutes");
 connectDB();
 
 const app = express();
+app.use(cors());
 
 // Middleware
 // Allow configuring allowed origins via environment variable `CORS_ORIGINS`
 // Example: CORS_ORIGINS="https://employee-task-manager-jet.vercel.app,http://localhost:5173"
-const rawOrigins =
-  process.env.CORS_ORIGINS ||
-  "https://employee-task-manager-jet.vercel.app,http://localhost:5173,http://localhost:3000";
-const allowedOrigins = rawOrigins
-  .split(",")
-  .map((o) => o.trim())
-  .filter(Boolean);
+// const rawOrigins =
+//   process.env.CORS_ORIGINS ||
+//   "https://employee-task-manager-jet.vercel.app,http://localhost:5173,http://localhost:3000";
+// const allowedOrigins = rawOrigins
+//   .split(",")
+//   .map((o) => o.trim())
+//   .filter(Boolean);
 
-console.log("CORS allowed origins:", allowedOrigins);
+// console.log("CORS allowed origins:", allowedOrigins);
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps, curl, server-to-server)
-    if (!origin) return callback(null, true);
-    if (
-      allowedOrigins.indexOf("*") !== -1 ||
-      allowedOrigins.indexOf(origin) !== -1
-    ) {
-      return callback(null, true);
-    }
-    // Otherwise reject
-    return callback(new Error("Not allowed by CORS"));
-  },
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     // Allow requests with no origin (like mobile apps, curl, server-to-server)
+//     if (!origin) return callback(null, true);
+//     if (
+//       allowedOrigins.indexOf("*") !== -1 ||
+//       allowedOrigins.indexOf(origin) !== -1
+//     ) {
+//       return callback(null, true);
+//     }
+//     // Otherwise reject
+//     return callback(new Error("Not allowed by CORS"));
+//   },
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   credentials: true,
+//   allowedHeaders: ["Content-Type", "Authorization"],
+// };
 
 // Handle preflight requests for all routes
-app.options("*", cors(corsOptions));
-app.use(cors(corsOptions)); // requests from your React frontend
+// app.options("*", cors(corsOptions));
+// app.use(cors(corsOptions)); // requests from your React frontend
 app.use(express.json()); //  handling raw JSON data
 app.use(express.urlencoded({ extended: false })); // Allows handling form data
 
